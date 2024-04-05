@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NumberPyramid</title>
+</head>
+
+<body>
+  <h1>숫자 별찍기</h1>
+  <div>
+    <label for="height">원하는 숫자를 입력하세요. (1부터 9까지 가능):</label>
+    <input type="number" id="height" min="1" max="9">
+    <button onclick="printPyramid()">출력</button>
+  </div>
+  <pre id="pyramidOutput"></pre>
+
+  <script>
+    const printPyramid = () => {
+      const heightInput = document.getElementById("height");
+      const height = parseInt(heightInput.value);
+
+      if (height < 1 || height > 9) {
+        return;
+      }
+
+      let pyramidOutput = "";
+
+      for (let i = 1; i <= height; i++) {
+        const spaces = ' '.repeat(height - i);
+        let numbers = '';
+        for (let j = 1; j <= i; j++) {
+          numbers += `${i}`;
+        }
+        pyramidOutput += `${spaces}${numbers}\n`;
+      }
+
+      document.getElementById("pyramidOutput").innerHTML = pyramidOutput;
+    };
+  </script>
+</body>
+
+</html>
